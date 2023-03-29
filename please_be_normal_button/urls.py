@@ -18,5 +18,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("pbn_button/", include("pbn_button.urls"))
+    path('', include("pbn_button.urls")),
+    path('members/', include('django.contrib.auth.urls'))
 ]
