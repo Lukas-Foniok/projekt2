@@ -2,4 +2,12 @@
 
 {% block content %}
     <h1>Klikzbutn</h1>
+
+    {% if button.state %}
+        <p>The button is pressed</p>
+    {% else %}
+        <p>The button is not pressed</p>
+    {% endif %}
+
+    <a href="{% url 'press_button' %}">PRESS ME!</a>
 {% endblock %}

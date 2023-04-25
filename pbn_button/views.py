@@ -29,6 +29,14 @@ def index(request):
         messages.success(request, 'You cannot access that without logging in!')
         return redirect('login_user')
     else:
-        if not Button.objects.first().exists():
-            Button.objects.create(state='False')
-        return render(request, 'index.html', { 'is_logged_in': True, "Button": Button.objects.first()})
+        if not Button.objects.first():
+            Button.objects.create(state=False)
+        return render(request, 'index.html', { 'is_logged_in': True, "button": Button.objects.first()})
+    
+def press_button(request):
+    if not Button.objects.first():
+        Button.objects.create(state=False)
+    button = Button.objects.first()
+    button.state = not button.state
+    button.save()
+    return redirect('index')
