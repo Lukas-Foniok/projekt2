@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <h1>Klikzbutn</h1>
 
     {% if button.state %}
-        <p>The button is pressed</p>
+        <p>The button is pressed</p>¨
+        <img src="{% static 'button_pressed.png' %}" alt="Button Pressed">
     {% else %}
         <p>The button is not pressed</p>
+        <img src="{% static 'button_unpressed.png' %}" alt="Button Unpressed">
     {% endif %}
 
     <a href="{% url 'press_button' %}">PRESS ME!</a>
